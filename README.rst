@@ -48,12 +48,6 @@ This process can be automated by running
 
     release2cff update <doi>
 
-CITATION.cff file can be validated with
-
-.. code-block:: bash
-
-    release2cff validate
-
 Credits
 -------
 

@@ -3,11 +3,9 @@
 """Console script for release2cff."""
 import sys
 import re
-import pkg_resources
 
 import click
 from nameparser import HumanName
-from pykwalifire.core import Core
 import requests
 import ruamel.yaml
 
@@ -80,22 +78,6 @@ def update(doi):
     * DOI, The Zenodo DOI url of a GitHub release
     """
     raise NotImplementedError('Update command has not been implemented')
-
-
-@main.command()
-@click.option('--cff_fn',
-              type=click.Path(exists=True),
-              default='CITATION.cff',
-              help='Name of citation formatted output file',
-              show_default=True)
-def validate(cff_fn):
-    fn = click.format_filename(cff_fn)
-    schema = pkg_resources.resource_filename('release2cff', 'schema.yaml')
-    c = Core(source_file=fn,
-             schema_files=[schema],
-             yaml_extension='cff')
-    c.validate(raise_exception=True)
-    click.echo('{0} is valid'.format(fn))
 
 
 def fetch_zenodo_by_doiurl(doiurl):
