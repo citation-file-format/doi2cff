@@ -3,8 +3,8 @@ Release 2 cff
 =============
 
 
-.. image:: https://img.shields.io/travis/sverhoeven/release2cff.svg
-        :target: https://travis-ci.org/sverhoeven/release2cff
+.. image:: https://img.shields.io/travis/3D-e-Chem/release2cff.svg
+        :target: https://travis-ci.org/3D-e-Chem/release2cff
 
 .. image:: https://readthedocs.org/projects/release2cff/badge/?version=latest
         :target: https://release2cff.readthedocs.io/en/latest/?badge=latest
@@ -25,7 +25,7 @@ Installation
 
 .. code-block:: bash
 
-    pip install https://github.com/sverhoeven/release2cff
+    pip install git+https://github.com/3D-e-Chem/release2cff
 
 Usage
 -----

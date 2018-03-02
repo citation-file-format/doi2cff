@@ -32,13 +32,13 @@ You can either clone the public repository:
 
 .. code-block:: console
 
-    $ git clone git://github.com/sverhoeven/release2cff
+    $ git clone git://github.com/3D-e-Chem/release2cff
 
 Or download the `tarball`_:
 
 .. code-block:: console
 
-    $ curl  -OL https://github.com/sverhoeven/release2cff/tarball/master
+    $ curl  -OL https://github.com/3D-e-Chem/release2cff/tarball/master
 
 Once you have a copy of the source, you can install it with:
 
@@ -47,5 +47,5 @@ Once you have a copy of the source, you can install it with:
     $ python setup.py install
 
 
-.. _Github repo: https://github.com/sverhoeven/release2cff
-.. _tarball: https://github.com/sverhoeven/release2cff/tarball/master
+.. _Github repo: https://github.com/3D-e-Chem/release2cff
+.. _tarball: https://github.com/3D-e-Chem/release2cff/tarball/master
