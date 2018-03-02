@@ -33,7 +33,7 @@ def init(doi, cff_fn):
 # Metadata for citation of this software according to the CFF format (https://citation-file-format.github.io/)
 cff-version: 1.0.3
 message: If you use this software, please cite it as below.
-# FIXME title as repository name might no be best name, please make human readable
+# FIXME title as repository name might not be the best name, please make human readable
 title: x
 doi: 10.5281/zenodo.xxxxxx
 # FIXME splitting of full names is error prone, please check if given/family name are correct
@@ -53,7 +53,7 @@ license: x
     data['doi'] = zenodo_record['doi']
     tagurl = tagurl_of_zenodo(zenodo_record)
     if 'version' in zenodo_record['metadata']:
-        data['version'] = zenodo_record['metadata']['version']
+        data['version'] = re.sub('^(v)', '', zenodo_record['metadata']['version'])
     else:
         data['version'] = tagurl2version(tagurl)
     data['license'] = zenodo_record['metadata']['license']['id']
