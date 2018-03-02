@@ -59,11 +59,10 @@ license: x
     data['authors'] = authors_of_zenodo(zenodo_record)
     references = references_of_zenodo(zenodo_record)
     if references:
-        data['references'] = references
-        for r in data['references']:
-            if r['type'] is 'generic':
-                r.yaml_add_eol_comment('FIXME generic is too generic, see https://citation-file-format.github.io/1.0.3/specifications/#/reference-types for more specific types', 'type')
-        # Add comment when type=generic
+        data['references'] = yaml.seq(references)
+        for idx, r in enumerate(references):
+            if r['type'] == 'generic':
+                data['references'].yaml_add_eol_comment('FIXME generic is too generic, see https://citation-file-format.github.io/1.0.3/specifications/#/reference-types for more specific types', idx)
 
     yaml.dump(data, cff_fn)
 
@@ -165,15 +164,47 @@ def reference_of_zenodo(related_identifier):
             'notes': 'is compile/created by this citation',
         }
     if relation in {'cites', 'references'} and scheme == 'doi':
-        zenodo_record = fetch_zenodo_by_doi(identifier)
-        return {
-            'type': 'generic',
-            'doi': identifier,
-            'title': clean_zenodo_title(zenodo_record['metadata']['title']),
-            'authors': authors_of_zenodo(zenodo_record),
-        }
+        if dois_is_from_zenodo(identifier):
+            zenodo_record = fetch_zenodo_by_doi(identifier)
+            return {
+                'type': 'generic',
+                'doi': identifier,
+                'title': clean_zenodo_title(zenodo_record['metadata']['title']),
+                'authors': authors_of_zenodo(zenodo_record),
+            }
+        else:
+            csl_record = fetch_csljson(identifier)
+            return {
+                'type': 'generic',
+                'doi': identifier,
+                'title': csl_record['title'],
+                'authors': authors_of_csl(csl_record)
+            }
 
     return None
+
+
+def dois_is_from_zenodo(doi):
+    return '10.5281/zenodo.' in doi
+
+
+def fetch_csljson(doi):
+    doiurl = 'https://doi.org/' + doi
+    headers = {'Accept': 'application/vnd.citationstyles.csl+json'}
+    response = requests.get(doiurl, headers=headers)
+    response.raise_for_status()
+    return response.json()
+
+
+def authors_of_csl(record):
+    authors = []
+    for a in record['author']:
+        author = {
+            'given-names': a['given'],
+            'family-names': a['family'],
+        }
+        authors.append(author)
+    return authors
 
 
 if __name__ == "__main__":
