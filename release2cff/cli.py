@@ -168,7 +168,7 @@ def reference_of_zenodo(related_identifier):
             'doi': identifier,
             'title': clean_zenodo_title(zenodo_record['metadata']['title']),
             'authors': authors_of_zenodo(zenodo_record),
-            'notes': 'is compile/created by this citation',
+            'notes': 'is compiled/created by this citation',
         }
     if relation in {'cites', 'references'} and scheme == 'doi':
         if dois_is_from_zenodo(identifier):
