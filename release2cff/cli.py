@@ -51,10 +51,13 @@ license: x
 
     data['title'] = clean_zenodo_title(zenodo_record['metadata']['title'])
     data['doi'] = zenodo_record['doi']
-    data['version'] = zenodo_record['metadata']['version']
+    tagurl = tagurl_of_zenodo(zenodo_record)
+    if 'version' in zenodo_record['metadata']:
+        data['version'] = zenodo_record['metadata']['version']
+    else:
+        data['version'] = tagurl2version(tagurl)
     data['license'] = zenodo_record['metadata']['license']['id']
     data['date-released'] = zenodo_record['metadata']['publication_date']
-    tagurl = tagurl_of_zenodo(zenodo_record)
     data['repository-code'] = tagurl2repo(tagurl)
     data['authors'] = authors_of_zenodo(zenodo_record)
     references = references_of_zenodo(zenodo_record)
@@ -109,6 +112,10 @@ def tagurl_of_zenodo(record):
 
 def tagurl2repo(tagurl):
     return re.sub('(/tree/.*)$', '', tagurl)
+
+
+def tagurl2version(tagurl):
+    return re.sub('^.*(/tree/v?)', '', tagurl)
 
 
 def clean_zenodo_title(title):
