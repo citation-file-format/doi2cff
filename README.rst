@@ -3,9 +3,6 @@ Release 2 cff
 =============
 
 
-.. image:: https://img.shields.io/pypi/v/release2cff.svg
-        :target: https://pypi.python.org/pypi/release2cff
-
 .. image:: https://img.shields.io/travis/sverhoeven/release2cff.svg
         :target: https://travis-ci.org/sverhoeven/release2cff
 
@@ -16,17 +13,46 @@ Release 2 cff
 
 
 
-Create citation file formatted file from a Github/Zenodo release
+Create citation file formatted file (https://citation-file-format.github.io/) from a Github/Zenodo release
 
 
 * Free software: Apache Software License 2.0
 * Documentation: https://release2cff.readthedocs.io.
 
 
-Features
---------
+Installation
+------------
 
-* TODO
+.. code-block:: bash
+
+    pip install https://github.com/sverhoeven/release2cff
+
+Usage
+-----
+
+To create a CITATION.cff file of a release, you must supply the doi that is associated with the release.
+
+.. code-block:: bash
+
+   release2cff init <doi>
+
+   # For example for boatswain (https://github.com/NLeSC/boatswain)
+   release2cff init https://doi.org/10.5281/zenodo.1149011
+
+The generated file must be checked for correctness and you are encouraged to enrich it further.
+
+Whenever a new release is made of the software the CITATION.cff must be updated with new doi/version/release date.
+This process can be automated by running
+
+.. code-block:: bash
+
+    release2cff update <doi>
+
+CITATION.cff file can be validated with
+
+.. code-block:: bash
+
+    release2cff validate
 
 Credits
 -------

@@ -11,7 +11,7 @@ with open('README.rst') as readme_file:
 with open('HISTORY.rst') as history_file:
     history = history_file.read()
 
-requirements = ['Click>=6.0', ]
+requirements = ['Click>=6.0', 'ruamel.yaml>=0.15.35', 'requests', 'nameparser', 'pykwalifire']
 
 setup_requirements = ['pytest-runner', ]
 
@@ -25,8 +25,6 @@ setup(
         'Intended Audience :: Developers',
         'License :: OSI Approved :: Apache Software License',
         'Natural Language :: English',
-        "Programming Language :: Python :: 2",
-        'Programming Language :: Python :: 2.7',
         'Programming Language :: Python :: 3',
         'Programming Language :: Python :: 3.4',
         'Programming Language :: Python :: 3.5',
@@ -38,6 +36,7 @@ setup(
             'release2cff=release2cff.cli:main',
         ],
     },
+    package_data={'release2cff': ['schema.yaml']},
     install_requires=requirements,
     license="Apache Software License 2.0",
     long_description=readme + '\n\n' + history,
@@ -48,7 +47,7 @@ setup(
     setup_requires=setup_requirements,
     test_suite='tests',
     tests_require=test_requirements,
-    url='https://github.com/sverhoeven/release2cff',
+    url='https://github.com/3D-e-Chem/release2cff',
     version='1.0.0',
     zip_safe=False,
 )
