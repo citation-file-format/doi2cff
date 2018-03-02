@@ -83,7 +83,7 @@ def update(doi):
 
 
 def fetch_zenodo_by_doiurl(doiurl):
-    zenodo_id = doiurl.replace('https://doi.org/', '')
+    zenodo_id = re.sub('https?://doi.org/', '', doiurl)
     return fetch_zenodo_by_doi(zenodo_id)
 
 
