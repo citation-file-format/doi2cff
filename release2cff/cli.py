@@ -3,6 +3,7 @@
 """Console script for release2cff."""
 import sys
 import re
+import datetime
 
 import click
 from nameparser import HumanName
@@ -57,7 +58,7 @@ license: x
     else:
         data['version'] = tagurl2version(tagurl)
     data['license'] = zenodo_record['metadata']['license']['id']
-    data['date-released'] = zenodo_record['metadata']['publication_date']
+    data['date-released'] = datetime.datetime.strptime(zenodo_record['metadata']['publication_date'], "%Y-%m-%d")
     data['repository-code'] = tagurl2repo(tagurl)
     data['authors'] = authors_of_zenodo(zenodo_record)
     references = references_of_zenodo(zenodo_record)
