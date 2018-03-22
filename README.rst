@@ -13,7 +13,7 @@ Release 2 cff
 
 
 
-Create citation file formatted file (https://citation-file-format.github.io/) from a Github/Zenodo release
+Create citation file formatted file (https://citation-file-format.github.io/) from a GitHub/Zenodo release
 
 
 * Free software: Apache Software License 2.0
