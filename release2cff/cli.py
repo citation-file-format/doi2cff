@@ -75,12 +75,30 @@ license: x
 
 @main.command()
 @click.argument('doi')
-def update(doi):
-    """Update CITATION.cff with doi of a new release
+@click.option('--cff_fn',
+              type=click.File('r+'),
+              default='CITATION.cff',
+              help='Name of citation formatted output file',
+              show_default=True)
+def update(doi, cff_fn):
+    """Update CITATION.cff with doi, version and release date of a new release
 
     * DOI, The Zenodo DOI url of a GitHub release
     """
-    raise NotImplementedError('Update command has not been implemented')
+    yaml = ruamel.yaml.YAML()
+    data = yaml.load(cff_fn)
+
+    zenodo_record = fetch_zenodo_by_doiurl(doi)
+    data['doi'] = zenodo_record['doi']
+    tagurl = tagurl_of_zenodo(zenodo_record)
+    if 'version' in zenodo_record['metadata']:
+        data['version'] = re.sub('^(v)', '', zenodo_record['metadata']['version'])
+    else:
+        data['version'] = tagurl2version(tagurl)
+    data['date-released'] = datetime.strptime(zenodo_record['metadata']['publication_date'], "%Y-%m-%d").date()
+
+    cff_fn.seek(0)
+    yaml.dump(data, cff_fn)
 
 
 def fetch_zenodo_by_doiurl(doiurl):
