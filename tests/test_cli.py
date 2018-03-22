@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-"""Tests for `release2cff` package."""
+"""Tests for `doi2cff` package."""
 from io import FileIO, StringIO
 
 import pytest
@@ -9,8 +9,8 @@ import pytest
 from click.testing import CliRunner
 import requests_mock
 
-from release2cff import cli
-from release2cff.cli import init, update, update_version
+from doi2cff import cli
+from doi2cff.cli import init, update, update_version
 
 
 @pytest.fixture

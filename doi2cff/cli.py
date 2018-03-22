@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-"""Console script for release2cff."""
+"""Console script for doi2cff."""
 import sys
 import re
 from datetime import datetime
@@ -9,7 +9,7 @@ import click
 from nameparser import HumanName
 import ruamel.yaml
 
-from release2cff.fetchers import fetch_zenodo_by_doiurl, fetch_zenodo_by_doi, fetch_csljson
+from doi2cff.fetchers import fetch_zenodo_by_doiurl, fetch_zenodo_by_doi, fetch_csljson
 
 
 @click.group()

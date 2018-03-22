@@ -1,23 +1,27 @@
-=============
-Release 2 cff
-=============
+=========
+DOI 2 cff
+=========
 
 
-.. image:: https://img.shields.io/travis/3D-e-Chem/release2cff.svg
-        :target: https://travis-ci.org/3D-e-Chem/release2cff
+.. image:: https://img.shields.io/travis/3D-e-Chem/doi2cff.svg
+        :target: https://travis-ci.org/3D-e-Chem/doi2cff
 
-.. image:: https://readthedocs.org/projects/release2cff/badge/?version=latest
-        :target: https://release2cff.readthedocs.io/en/latest/?badge=latest
+.. image:: https://readthedocs.org/projects/doi2cff/badge/?version=latest
+        :target: https://doi2cff.readthedocs.io/en/latest/?badge=latest
         :alt: Documentation Status
 
 
 
 
-Create citation file formatted file (https://citation-file-format.github.io/) from a GitHub/Zenodo release
+Script to create citation file formatted file (https://citation-file-format.github.io/) from DOI
+
+Current DOI flavors:
+
+* GitHub/Zenodo release
 
 
 * Free software: Apache Software License 2.0
-* Documentation: https://release2cff.readthedocs.io.
+* Documentation: https://doi2cff.readthedocs.io.
 
 
 Installation
@@ -25,7 +29,7 @@ Installation
 
 .. code-block:: bash
 
-    pip install git+https://github.com/3D-e-Chem/release2cff
+    pip install git+https://github.com/3D-e-Chem/doi2cff
 
 Usage
 -----
@@ -34,10 +38,10 @@ To create a CITATION.cff file of a release, you must supply the doi that is asso
 
 .. code-block:: bash
 
-   release2cff init <doi>
+   doi2cff init <doi>
 
    # For example for boatswain (https://github.com/NLeSC/boatswain)
-   release2cff init https://doi.org/10.5281/zenodo.1149011
+   doi2cff init https://doi.org/10.5281/zenodo.1149011
 
 The generated file must be checked for correctness and you are encouraged to enrich it further.
 
@@ -46,7 +50,7 @@ This process can be automated by running
 
 .. code-block:: bash
 
-    release2cff update <doi>
+    doi2cff update <doi>
 
 Credits
 -------

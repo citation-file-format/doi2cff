@@ -4,7 +4,7 @@
 # You can set these variables from the command line.
 SPHINXOPTS    =
 SPHINXBUILD   = python -msphinx
-SPHINXPROJ    = release2cff
+SPHINXPROJ    = doi2cff
 SOURCEDIR     = .
 BUILDDIR      = _build
 

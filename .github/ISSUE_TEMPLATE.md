@@ -1,4 +1,4 @@
-* Release 2 cff version:
+* DOI 2 cff version:
 * Python version:
 * Operating System:
 
