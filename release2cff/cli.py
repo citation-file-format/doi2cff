@@ -7,8 +7,9 @@ from datetime import datetime
 
 import click
 from nameparser import HumanName
-import requests
 import ruamel.yaml
+
+from release2cff.fetchers import fetch_zenodo_by_doiurl, fetch_zenodo_by_doi, fetch_csljson
 
 
 @click.group()
@@ -50,7 +51,7 @@ license: x
 
     zenodo_record = fetch_zenodo_by_doiurl(doi)
 
-    data['title'] = clean_zenodo_title(zenodo_record['metadata']['title'])
+    data['title'] = zenodo_record['metadata']['title']
     data['doi'] = zenodo_record['doi']
     tagurl = tagurl_of_zenodo(zenodo_record)
     if 'version' in zenodo_record['metadata']:
@@ -85,8 +86,12 @@ def update(doi, cff_fn):
 
     * DOI, The Zenodo DOI url of a GitHub release
     """
+    update_version(doi, cff_fn)
+
+
+def update_version(doi, cff_file_handle):
     yaml = ruamel.yaml.YAML()
-    data = yaml.load(cff_fn)
+    data = yaml.load(cff_file_handle)
 
     zenodo_record = fetch_zenodo_by_doiurl(doi)
     data['doi'] = zenodo_record['doi']
@@ -97,28 +102,9 @@ def update(doi, cff_fn):
         data['version'] = tagurl2version(tagurl)
     data['date-released'] = datetime.strptime(zenodo_record['metadata']['publication_date'], "%Y-%m-%d").date()
 
-    cff_fn.seek(0)
-    yaml.dump(data, cff_fn)
-
-
-def fetch_zenodo_by_doiurl(doiurl):
-    zenodo_id = re.sub('https?://doi.org/', '', doiurl)
-    return fetch_zenodo_by_doi(zenodo_id)
-
-
-def fetch_zenodo_by_doi(doi):
-    zenodo_id = doi.replace('10.5281/zenodo.', '')
-    return fetch_zenodo_by_id(zenodo_id)
-
-
-def fetch_zenodo_by_id(zenodo_id):
-    zenodo_json_url = 'https://zenodo.org/api/records/' + zenodo_id
-
-    response = requests.get(zenodo_json_url)
-
-    response.raise_for_status()
-
-    return response.json()
+    cff_file_handle.seek(0)
+    yaml.dump(data, cff_file_handle)
+    cff_file_handle.flush()
 
 
 def tagurl_of_zenodo(record):
@@ -135,12 +121,6 @@ def tagurl2repo(tagurl):
 
 def tagurl2version(tagurl):
     return re.sub('^.*(/tree/v?)', '', tagurl)
-
-
-def clean_zenodo_title(title):
-    title_without_version = re.sub(': .*$', '', title)
-    title_without_organization = re.sub('^.*/', '', title_without_version)
-    return title_without_organization
 
 
 def authors_of_zenodo(zenodo_record):
@@ -185,7 +165,7 @@ def reference_of_zenodo(related_identifier):
         return {
             'type': 'software',
             'doi': identifier,
-            'title': clean_zenodo_title(zenodo_record['metadata']['title']),
+            'title': zenodo_record['metadata']['title'],
             'authors': authors_of_zenodo(zenodo_record),
             'notes': 'is compiled/created by this citation',
         }
@@ -195,7 +175,7 @@ def reference_of_zenodo(related_identifier):
             return {
                 'type': 'generic',
                 'doi': identifier,
-                'title': clean_zenodo_title(zenodo_record['metadata']['title']),
+                'title': zenodo_record['metadata']['title'],
                 'authors': authors_of_zenodo(zenodo_record),
             }
         else:
@@ -212,14 +192,6 @@ def reference_of_zenodo(related_identifier):
 
 def dois_is_from_zenodo(doi):
     return '10.5281/zenodo.' in doi
-
-
-def fetch_csljson(doi):
-    doiurl = 'https://doi.org/' + doi
-    headers = {'Accept': 'application/vnd.citationstyles.csl+json'}
-    response = requests.get(doiurl, headers=headers)
-    response.raise_for_status()
-    return response.json()
 
 
 def authors_of_csl(record):
