@@ -207,10 +207,19 @@ def fetch_csljson(doi):
 def authors_of_csl(record):
     authors = []
     for a in record['author']:
-        author = {
-            'given-names': a['given'],
-            'family-names': a['family'],
-        }
+        if 'given' in a and 'family' in a:
+            author = {
+                'given-names': a['given'],
+                'family-names': a['family'],
+            }
+        elif 'literal' in a:
+            name = HumanName(a['literal'])
+            author = {
+                'given-names': name.first,
+                'family-names': name.last,
+            }
+        else:
+            raise NotImplemented('Do not understand author field: {}'.format(a))
         authors.append(author)
     return authors
 
