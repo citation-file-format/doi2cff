@@ -15,9 +15,9 @@ DOI 2 cff
 
 Script to create citation file formatted file (https://citation-file-format.github.io/) from DOI
 
-Current DOI flavors:
+Current DOI types:
 
-* GitHub/Zenodo release
+* Zenodo software from a GitHub release
 
 
 * Free software: Apache Software License 2.0

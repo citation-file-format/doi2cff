@@ -19,6 +19,10 @@ def main():
     pass
 
 
+def is_software_zenodo(zenodo_record):
+    return zenodo_record['metadata']['resource_type']['type'] == 'software'
+
+
 @main.command()
 @click.argument('doi')
 @click.option('--cff_fn',
@@ -46,11 +50,16 @@ repository-code: x
 license: x
     '''
 
-    yaml = ruamel.yaml.YAML()
-    data = yaml.load(template)
+    if not doi_is_from_zenodo(doi):
+        raise NotImplemented('Unable to process doi, converter not implemented')
 
     zenodo_record = fetch_zenodo_by_doiurl(doi)
 
+    if not is_software_zenodo(zenodo_record):
+        raise NotImplemented('Unable to process doi, converter not implemented for zenodo entries other than software')
+
+    yaml = ruamel.yaml.YAML()
+    data = yaml.load(template)
     data['title'] = zenodo_record['metadata']['title']
     data['doi'] = zenodo_record['doi']
     tagurl = tagurl_of_zenodo(zenodo_record)
@@ -170,7 +179,7 @@ def reference_of_zenodo(related_identifier):
             'notes': 'is compiled/created by this citation',
         }
     if relation in {'cites', 'references'} and scheme == 'doi':
-        if dois_is_from_zenodo(identifier):
+        if doi_is_from_zenodo(identifier):
             zenodo_record = fetch_zenodo_by_doi(identifier)
             return {
                 'type': 'generic',
@@ -190,7 +199,7 @@ def reference_of_zenodo(related_identifier):
     return None
 
 
-def dois_is_from_zenodo(doi):
+def doi_is_from_zenodo(doi):
     return '10.5281/zenodo.' in doi
 
 
