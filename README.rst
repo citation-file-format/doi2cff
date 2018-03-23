@@ -10,7 +10,13 @@ DOI 2 cff
         :target: https://doi2cff.readthedocs.io/en/latest/?badge=latest
         :alt: Documentation Status
 
+.. image:: https://sonarcloud.io/api/project_badges/measure?project=doi2cff&metric=alert_status
+       :target: https://sonarcloud.io/dashboard?id=doi2cff
+       :alt: SonarCloud quality gate
 
+.. image:: https://sonarcloud.io/api/project_badges/measure?project=doi2cff&metric=coverage
+       :target: https://sonarcloud.io/api/project_badges/measure?project=doi2cff&metric=coverage
+       :alt: SonarCloud coverage
 
 
 Script to create citation file formatted file (https://citation-file-format.github.io/) from a DOI.

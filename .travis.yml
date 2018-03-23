@@ -8,6 +8,12 @@ python:
 install: pip install -U tox-travis
 
 # Command to run tests, e.g. python setup.py test
-script: tox
+script:
+- tox
+# SonarCloud does not understand coverage file with filenames relative to doi2cff so make . sourcedir
+- perl -pi -e 's@/doi2cff@@;s@filename="@filename="doi2cff/@' coverage.xml
+- sonar-scanner -Dsonar.login=$SONAR_TOKEN -X
 
-
+addons:
+  sonarcloud:
+    organization: citation-file-format
