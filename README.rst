@@ -3,9 +3,9 @@ DOI 2 cff
 =========
 
 
-.. image:: https://img.shields.io/travis/citation-file-format/doi2cff.svg
-        :target: https://travis-ci.org/citation-file-format/doi2cff
-
+.. image:: https://travis-ci.org/citation-file-format/doi2cff.svg?branch=master
+    :target: https://travis-ci.org/citation-file-format/doi2cff
+    
 .. image:: https://readthedocs.org/projects/doi2cff/badge/?version=latest
         :target: https://doi2cff.readthedocs.io/en/latest/?badge=latest
         :alt: Documentation Status
