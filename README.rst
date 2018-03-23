@@ -18,6 +18,8 @@ DOI 2 cff
        :target: https://sonarcloud.io/api/project_badges/measure?project=doi2cff&metric=coverage
        :alt: SonarCloud coverage
 
+.. image:: https://zenodo.org/badge/DOI/10.5281/zenodo.1206048.svg
+   :target: https://doi.org/10.5281/zenodo.1206048
 
 Script to create citation file formatted file (https://citation-file-format.github.io/) from a DOI.
 
