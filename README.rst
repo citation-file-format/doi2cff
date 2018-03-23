@@ -13,16 +13,15 @@ DOI 2 cff
 
 
 
-Script to create citation file formatted file (https://citation-file-format.github.io/) from DOI
+Script to create citation file formatted file (https://citation-file-format.github.io/) from a DOI.
 
-Current DOI types:
+Current supported DOI types:
 
 * Zenodo software from a GitHub release
 
+Free software: Apache Software License 2.0
 
-* Free software: Apache Software License 2.0
-* Documentation: https://doi2cff.readthedocs.io.
-
+Documentation: https://doi2cff.readthedocs.io.
 
 Installation
 ------------
