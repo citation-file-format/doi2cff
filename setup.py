@@ -36,7 +36,6 @@ setup(
             'doi2cff=doi2cff.cli:main',
         ],
     },
-    package_data={'doi2cff': ['schema.yaml']},
     install_requires=requirements,
     license="Apache Software License 2.0",
     long_description=readme + '\n\n' + history,
