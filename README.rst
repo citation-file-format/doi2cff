@@ -3,8 +3,8 @@ DOI 2 cff
 =========
 
 
-.. image:: https://img.shields.io/travis/3D-e-Chem/doi2cff.svg
-        :target: https://travis-ci.org/3D-e-Chem/doi2cff
+.. image:: https://img.shields.io/travis/citation-file-format/doi2cff.svg
+        :target: https://travis-ci.org/citation-file-format/doi2cff
 
 .. image:: https://readthedocs.org/projects/doi2cff/badge/?version=latest
         :target: https://doi2cff.readthedocs.io/en/latest/?badge=latest
@@ -28,7 +28,7 @@ Installation
 
 .. code-block:: bash
 
-    pip install git+https://github.com/3D-e-Chem/doi2cff
+    pip install git+https://github.com/citation-file-format/doi2cff
 
 Usage
 -----
