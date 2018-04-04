@@ -34,6 +34,8 @@ Documentation: https://doi2cff.readthedocs.io.
 Installation
 ------------
 
+Requires Python 3.5 or higher.
+
 .. code-block:: bash
 
     pip install git+https://github.com/citation-file-format/doi2cff
