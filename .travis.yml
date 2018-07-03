@@ -8,11 +8,8 @@ matrix:
     - os: osx
       language: generic
       before_install:
-        - brew update
         - brew upgrade python3
-        - /usr/local/opt/python/libexec/bin/pip install virtualenv
-        - /usr/local/opt/python/libexec/bin/virtualenv env -p python3
-        - source env/bin/activate
+        - export PATH=/usr/local/opt/python/libexec/bin:$PATH
 
 # Command to install dependencies, e.g. pip install -r requirements.txt --use-mirrors
 install: pip install -U tox-travis
