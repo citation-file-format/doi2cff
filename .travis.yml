@@ -9,8 +9,8 @@ matrix:
       language: generic
       before_install:
         - if [ ! -e $HOME/conda/bin/activate ]; then
-          wget -nc https://repo.continuum.io/miniconda/Miniconda3-latest-MacOSX-x86_64.sh;
-          bash $INSTALLER -f -b -p $HOME/conda;
+          wget --quiet -nc https://repo.continuum.io/miniconda/Miniconda3-latest-MacOSX-x86_64.sh;
+          bash Miniconda3-latest-MacOSX-x86_64.sh -f -b -p $HOME/conda;
           fi
         - source $HOME/conda/bin/activate root
 
