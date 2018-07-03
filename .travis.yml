@@ -21,7 +21,7 @@ install:
 
 # Command to run tests, e.g. python setup.py test
 script:
-- pytest
+- pytest --cov --cov-report=xml --junitxml pytests.xml
 # SonarCloud does not understand coverage file with filenames relative to doi2cff so make . sourcedir
 - perl -pi -e 's@/doi2cff@@;s@filename="@filename="doi2cff/@' coverage.xml
 - sonar-scanner -Dsonar.login=$SONAR_TOKEN -X
