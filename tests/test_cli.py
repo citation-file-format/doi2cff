@@ -5,6 +5,7 @@
 from io import FileIO, StringIO
 
 import pytest
+import yaml
 
 from click.testing import CliRunner
 import requests_mock
@@ -43,7 +44,7 @@ def test_init(runner, zenodo_1200251, cff_1200251):
             result = f.read()
 
     expected = cff_1200251
-    assert result == expected
+    assert yaml.load(result) == yaml.load(expected)
 
 
 def test_update_version(cff_1194353, zenodo_1200251, cff_1194353_updated_1200251):
@@ -60,7 +61,7 @@ def test_update_version(cff_1194353, zenodo_1200251, cff_1194353_updated_1200251
         result = f.getvalue()
 
     expected = cff_1194353_updated_1200251
-    assert result == expected
+    assert yaml.load(result) == yaml.load(expected)
 
 
 def test_init_withzenodoref(runner, zenodo_1197761, zenodo_1200251, cff_1197761):
@@ -76,7 +77,7 @@ def test_init_withzenodoref(runner, zenodo_1197761, zenodo_1200251, cff_1197761)
             result = f.read()
 
     expected = cff_1197761
-    assert result == expected
+    assert yaml.load(result) == yaml.load(expected)
 
 
 def test_init_withnonzenodoref(runner, zenodo_58369, cslfor_58369, cff_58369):
@@ -92,4 +93,4 @@ def test_init_withnonzenodoref(runner, zenodo_58369, cslfor_58369, cff_58369):
             result = f.read()
 
     expected = cff_58369
-    assert result == expected
+    assert yaml.load(result) == yaml.load(expected)
