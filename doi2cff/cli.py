@@ -15,7 +15,13 @@ from doi2cff.fetchers import fetch_zenodo_by_doiurl, fetch_zenodo_by_doi, fetch_
 @click.group()
 @click.version_option()
 def main():
-    """Console script to generate/update CITATION.cff"""
+    """Console script to generate/update CITATION.cff
+
+    Current supported DOI types:
+
+        * Zenodo software from a GitHub release (https://guides.github.com/activities/citable-code/)
+
+    """
     pass
 
 

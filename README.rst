@@ -5,7 +5,7 @@ DOI 2 cff
 
 .. image:: https://travis-ci.org/citation-file-format/doi2cff.svg?branch=master
     :target: https://travis-ci.org/citation-file-format/doi2cff
-    
+
 .. image:: https://readthedocs.org/projects/doi2cff/badge/?version=latest
         :target: https://doi2cff.readthedocs.io/en/latest/?badge=latest
         :alt: Documentation Status
@@ -25,7 +25,7 @@ Script to create citation file formatted file (https://citation-file-format.gith
 
 Current supported DOI types:
 
-* Zenodo software from a GitHub release
+* Zenodo software from a GitHub release (https://guides.github.com/activities/citable-code/)
 
 Free software: Apache Software License 2.0
 
