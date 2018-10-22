@@ -64,11 +64,11 @@ Ready to contribute? Here's how to set up `doi2cff` for local development.
 
     $ git clone git@github.com:your_name_here/doi2cff.git
 
-3. Install your local copy into a virtualenv. Assuming you have virtualenvwrapper installed, this is how you set up your fork for local development::
+3. Install your local copy into a virtualenv. Assuming you have pipenv installed with Python 3.5 or higher, this is how you set up your fork for local development::
 
-    $ mkvirtualenv doi2cff
     $ cd doi2cff/
-    $ python setup.py develop
+    $ pipenv install -e . -r requirements_dev.txt
+    $ pipenv shell
 
 4. Create a branch for local development::
 

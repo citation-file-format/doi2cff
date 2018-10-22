@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 
 """Tests for `doi2cff` package."""
-from io import FileIO, StringIO
+from io import StringIO
 
 import pytest
 import yaml
@@ -11,7 +11,7 @@ from click.testing import CliRunner
 import requests_mock
 
 from doi2cff import cli
-from doi2cff.cli import init, update, update_version
+from doi2cff.cli import init, update_version
 
 
 @pytest.fixture

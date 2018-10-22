@@ -1,5 +1,7 @@
 import pytest
 
+# flake8: noqa: E501
+
 
 @pytest.fixture
 def zenodo_1200251():
@@ -636,6 +638,7 @@ def zenodo_58369():
       "revision": 9,
       "updated": "2018-03-05T11:00:00.709228+00:00"
     }
+
 
 @pytest.fixture
 def cslfor_58369():
