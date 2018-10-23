@@ -251,7 +251,7 @@ def cff_1200251():
     return '''# YAML 1.2
 # Metadata for citation of this software according to the CFF format (https://citation-file-format.github.io/)
 cff-version: 1.0.3
-message: If you use this software, please cite it as below.
+message: If you use this software, please cite it using these metadata.
 # FIXME title as repository name might not be the best name, please make human readable
 title: Xenon
 doi: 10.5281/zenodo.1200251
@@ -305,7 +305,7 @@ def cff_1194353():
     return '''# YAML 1.2
 # Metadata for citation of this software according to the CFF format (https://citation-file-format.github.io/)
 cff-version: 1.0.3
-message: If you use this software, please cite it as below.
+message: If you use this software, please cite it using these metadata.
 # FIXME title as repository name might not be the best name, please make human readable
 title: 'NLeSC/Xenon: This is release 2.6.0 of Xenon.'
 doi: 10.5281/zenodo.1194353
@@ -358,7 +358,7 @@ def cff_1194353_updated_1200251():
     return '''# YAML 1.2
 # Metadata for citation of this software according to the CFF format (https://citation-file-format.github.io/)
 cff-version: 1.0.3
-message: If you use this software, please cite it as below.
+message: If you use this software, please cite it using these metadata.
 # FIXME title as repository name might not be the best name, please make human readable
 title: 'NLeSC/Xenon: This is release 2.6.0 of Xenon.'
 doi: 10.5281/zenodo.1200251
@@ -497,7 +497,7 @@ def cff_1197761():
     return '''# YAML 1.2
 # Metadata for citation of this software according to the CFF format (https://citation-file-format.github.io/)
 cff-version: 1.0.3
-message: If you use this software, please cite it as below.
+message: If you use this software, please cite it using these metadata.
 # FIXME title as repository name might not be the best name, please make human readable
 title: Xenon gRPC server
 doi: 10.5281/zenodo.1197761
@@ -992,7 +992,7 @@ def cff_58369():
     return '''# YAML 1.2
 # Metadata for citation of this software according to the CFF format (https://citation-file-format.github.io/)
 cff-version: 1.0.3
-message: If you use this software, please cite it as below.
+message: If you use this software, please cite it using these metadata.
 # FIXME title as repository name might not be the best name, please make human readable
 title: 'knime-sstea: v1.0.5'
 doi: 10.5281/zenodo.58369

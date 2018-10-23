@@ -44,7 +44,7 @@ def init(doi, cff_fn):
     template = '''# YAML 1.2
 # Metadata for citation of this software according to the CFF format (https://citation-file-format.github.io/)
 cff-version: 1.0.3
-message: If you use this software, please cite it as below.
+message: If you use this software, please cite it using these metadata.
 # FIXME title as repository name might not be the best name, please make human readable
 title: x
 doi: 10.5281/zenodo.xxxxxx
