@@ -12,3 +12,4 @@ pytest-runner==4.2
 requests_mock==1.4.0
 pytest-cov==2.6.0
 pylint==1.8.3
+pluggy==0.8.0
