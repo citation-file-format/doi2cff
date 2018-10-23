@@ -109,3 +109,7 @@ ENV/
 
 # SonarCloud
 .scannerwork
+
+# pipenv files, for development
+Pipfile
+Pipfile.lock
