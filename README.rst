@@ -25,7 +25,7 @@ Script to create citation file formatted file (https://citation-file-format.gith
 
 Current supported DOI types:
 
-* Zenodo software from a GitHub release (https://guides.github.com/activities/citable-code/)
+* Zenodo upload from a GitHub release (https://guides.github.com/activities/citable-code/)
 
 Free software: Apache Software License 2.0
 
