@@ -94,3 +94,21 @@ def test_init_withnonzenodoref(runner, zenodo_58369, cslfor_58369, cff_58369):
 
     expected = cff_58369
     assert yaml.load(result) == yaml.load(expected)
+
+
+def test_init_csl(runner):
+    # TODO: complete!
+    doi = '10.1051/0004-6361/202037850'
+
+    with runner.isolated_filesystem():
+    #with runner.isolated_filesystem(), requests_mock.mock() as m:
+        #m.get('https://doi.org/10.1186/1471-2105-12-332', json=cslfor_mock)
+        #m.get('https://doi.org/10.1186/1471-2105-12-332', json=cslfor_58369)
+
+        runner.invoke(init, [doi])
+
+        with open('CITATION.cff', 'r') as f:
+            result = f.read()
+
+    #expected = cff_58369
+    #assert yaml.load(result) == yaml.load(expected)

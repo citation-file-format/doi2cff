@@ -4,6 +4,7 @@
 import sys
 import re
 from datetime import datetime
+from typing import Any, Tuple
 
 import click
 from nameparser import HumanName
@@ -29,41 +30,7 @@ def is_software_zenodo(zenodo_record):
     return zenodo_record['metadata']['resource_type']['type'] == 'software'
 
 
-@main.command()
-@click.argument('doi')
-@click.option('--cff_fn',
-              type=click.File('x'),
-              default='CITATION.cff',
-              help='Name of citation formatted output file',
-              show_default=True)
-def init(doi, cff_fn):
-    """Generate CITATION.cff file based on a Zenodo DOI of a Github release.
-
-    * DOI, The Digital Object Identifier (DOI) name of a Zenodo upload of a GitHub release
-    """
-    template = '''# YAML 1.2
-# Metadata for citation of this software according to the CFF format (https://citation-file-format.github.io/)
-cff-version: 1.0.3
-message: If you use this software, please cite it using these metadata.
-# FIXME title as repository name might not be the best name, please make human readable
-title: x
-doi: 10.5281/zenodo.xxxxxx
-# FIXME splitting of full names is error prone, please check if given/family name are correct
-authors: []
-version: x
-date-released: yyyy-mm-dd
-repository-code: x
-license: x
-    '''
-
-    if not doi_is_from_zenodo(doi):
-        raise click.UsageError('Unable to process DOI name, only accept DOI name which is a Zenodo upload')
-
-    zenodo_record = fetch_zenodo_by_doiurl(doi)
-
-    if not is_software_zenodo(zenodo_record):
-        raise click.UsageError('Unable to process DOI name, only accept DOI name which is a Zenodo upload of type software')
-
+def zenodo_record_to_cff_yaml(zenodo_record: dict, template) -> Tuple[ruamel.yaml.YAML, Any]:
     yaml = ruamel.yaml.YAML()
     data = yaml.load(template)
     data['title'] = zenodo_record['metadata']['title']
@@ -85,6 +52,86 @@ license: x
         for idx, r in enumerate(references):
             if r['type'] == 'generic':
                 data['references'].yaml_add_eol_comment(fixme, idx)
+    
+    return yaml, data
+
+
+def csljson_to_cff_yaml(cffjson: dict, template) -> Tuple[ruamel.yaml.YAML, Any]:
+    # TODO: to complete!
+    yaml = ruamel.yaml.YAML()
+    data = yaml.load(template)
+
+    data['title'] = cffjson['title']
+    data['doi'] = cffjson['DOI']
+    #tagurl = tagurl_of_zenodo(cffjson)
+    # if 'version' in cffjson['metadata']:
+    #     data['version'] = re.sub('^(v)', '', cffjson['metadata']['version'])
+    # else:
+    #     data['version'] = tagurl2version(tagurl)
+    data['license'] = cffjson['license']
+    data['date-released'] = datetime(*cffjson['published-print']['date-parts'][0], 1).date()
+    #data['repository-code'] = tagurl2repo(tagurl)
+    data['authors'] = authors_of_csl(cffjson)
+    #references = references_of_zenodo(cffjson)
+    # fixme = 'FIXME generic is too generic, ' \
+    #         'see https://citation-file-format.github.io/1.0.3/specifications/#/reference-types for more specific types'
+    # if references:
+    #     data['references'] = yaml.seq(references)
+    #     for idx, r in enumerate(references):
+    #         if r['type'] == 'generic':
+    #             data['references'].yaml_add_eol_comment(fixme, idx)
+    
+    return yaml, data
+
+
+@main.command()
+@click.argument('doi')
+@click.option('--cff_fn',
+              type=click.File('x'),
+              default='CITATION.cff',
+              help='Name of citation formatted output file',
+              show_default=True)
+@click.option('--experimental/--no-experimental',
+              is_flag=True,
+              default=False,
+              help='experimental non-zenodo',
+              show_default=True)
+def init(doi, cff_fn, experimental):
+    """Generate CITATION.cff file based on a Zenodo DOI of a Github release.
+
+    * DOI, The Digital Object Identifier (DOI) name of a Zenodo upload of a GitHub release
+    """
+    template = '''# YAML 1.2
+# Metadata for citation of this software according to the CFF format (https://citation-file-format.github.io/)
+cff-version: 1.0.3
+message: If you use this software, please cite it using these metadata.
+# FIXME title as repository name might not be the best name, please make human readable
+title: x
+doi: 10.5281/zenodo.xxxxxx
+# FIXME splitting of full names is error prone, please check if given/family name are correct
+authors: []
+version: x
+date-released: yyyy-mm-dd
+repository-code: x
+license: x
+    '''
+
+    if doi_is_from_zenodo(doi):
+        zenodo_record = fetch_zenodo_by_doiurl(doi)
+
+        if not is_software_zenodo(zenodo_record):
+            raise click.UsageError('Unable to process DOI name, only accept DOI name which is a Zenodo upload of type software')
+
+        yaml, data = zenodo_record_to_cff_yaml(zenodo_record, template)        
+    else:
+        if experimental:
+            click.echo("allow experimental")
+            csljson = fetch_csljson(doi)
+
+            yaml, data = csljson_to_cff_yaml(csljson, template)        
+        else:
+            raise click.UsageError('Unable to process DOI name, only accept DOI name which is a Zenodo upload')
+    
 
     yaml.dump(data, cff_fn)
 
