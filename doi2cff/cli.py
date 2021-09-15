@@ -21,6 +21,7 @@ def main():
     Current supported DOI types:
 
         * Zenodo upload of a GitHub release (https://guides.github.com/activities/citable-code/)
+        * Any DOIs with suitable metadata (experimental).
 
     """
     pass
@@ -63,23 +64,15 @@ def csljson_to_cff_yaml(cffjson: dict, template) -> Tuple[ruamel.yaml.YAML, Any]
 
     data['title'] = cffjson['title']
     data['doi'] = cffjson['DOI']
-    #tagurl = tagurl_of_zenodo(cffjson)
-    # if 'version' in cffjson['metadata']:
-    #     data['version'] = re.sub('^(v)', '', cffjson['metadata']['version'])
-    # else:
-    #     data['version'] = tagurl2version(tagurl)
     data['license'] = cffjson['license']
     data['date-released'] = datetime(*cffjson['published-print']['date-parts'][0], 1).date()
-    #data['repository-code'] = tagurl2repo(tagurl)
     data['authors'] = authors_of_csl(cffjson)
-    #references = references_of_zenodo(cffjson)
-    # fixme = 'FIXME generic is too generic, ' \
-    #         'see https://citation-file-format.github.io/1.0.3/specifications/#/reference-types for more specific types'
-    # if references:
-    #     data['references'] = yaml.seq(references)
-    #     for idx, r in enumerate(references):
-    #         if r['type'] == 'generic':
-    #             data['references'].yaml_add_eol_comment(fixme, idx)
+    references = cffjson['reference']
+    if references:
+        data['references'] = yaml.seq(references)
+        # for idx, r in enumerate(references):
+        #     if r['type'] == 'generic':
+        #         data['references'].yaml_add_eol_comment(fixme, idx)
     
     return yaml, data
 
@@ -94,7 +87,7 @@ def csljson_to_cff_yaml(cffjson: dict, template) -> Tuple[ruamel.yaml.YAML, Any]
 @click.option('--experimental/--no-experimental',
               is_flag=True,
               default=False,
-              help='experimental non-zenodo',
+              help='experimental parsing of non-zenodo links',
               show_default=True)
 def init(doi, cff_fn, experimental):
     """Generate CITATION.cff file based on a Zenodo DOI of a Github release.
@@ -125,12 +118,15 @@ license: x
         yaml, data = zenodo_record_to_cff_yaml(zenodo_record, template)        
     else:
         if experimental:
-            click.echo("allow experimental")
+            click.echo("Trying experimental parsing of arbitrary DOI")
             csljson = fetch_csljson(doi)
+
+            ruamel.yaml.dump(csljson, open("/tmp/csl.json", "w"))
 
             yaml, data = csljson_to_cff_yaml(csljson, template)        
         else:
-            raise click.UsageError('Unable to process DOI name, only accept DOI name which is a Zenodo upload')
+            raise click.UsageError('Unable to process DOI name, normally we only accept DOI name which is a Zenodo upload'
+                                   'You can try experimental parsing of other DOIs (see --experimental option).')
     
 
     yaml.dump(data, cff_fn)

@@ -100,15 +100,17 @@ def test_init_csl(runner):
     # TODO: complete!
     doi = '10.1051/0004-6361/202037850'
 
-    with runner.isolated_filesystem():
+#    with runner.isolated_filesystem():
+ #   with runner.isolated_filesystem():
     #with runner.isolated_filesystem(), requests_mock.mock() as m:
         #m.get('https://doi.org/10.1186/1471-2105-12-332', json=cslfor_mock)
         #m.get('https://doi.org/10.1186/1471-2105-12-332', json=cslfor_58369)
+    if True:
 
-        runner.invoke(init, [doi])
+        runner.invoke(init, [doi, '--experimental', '--cff_fn', '/tmp/CITATION.cff'], catch_exceptions=False)
 
-        with open('CITATION.cff', 'r') as f:
+        with open('/tmp/CITATION.cff', 'r') as f:
             result = f.read()
 
     #expected = cff_58369
-    #assert yaml.load(result) == yaml.load(expected)
+    assert str(yaml.load(result)) == "" #yaml.load("expected")
