@@ -96,29 +96,12 @@ def test_init_withnonzenodoref(runner, zenodo_58369, cslfor_58369, cff_58369):
     expected = cff_58369
     assert yaml.load(result) == yaml.load(expected)
 
-def test_init_csl_withref(runner, cff_aa8f94):
+def test_init_csl_noref(runner, cff_202037850, cslfor_202037850):
     # TODO: complete!    
-    #m.get('https://doi.org/10.1186/1471-2105-12-332', json=cslfor_58369)
-    doi = '10.3847/2041-8213/aa8f94'
-
-    #with runner.isolated_filesystem(), requests_mock.mock() as m:    
-    with runner.isolated_filesystem():    
-        runner.invoke(init, [doi, '--experimental', '--cff_fn', 'CITATION.cff'], catch_exceptions=False)
-
-        with open('CITATION.cff', 'r') as f:
-            result = f.read()
-
-    #expected = cff_58369
-    assert yaml.load(result) == yaml.load(cff_aa8f94)
-
-
-def test_init_csl_noref(runner, cff_202037850):
-    # TODO: complete!    
-    #m.get('https://doi.org/10.1186/1471-2105-12-332', json=cslfor_58369)
     doi = '10.1051/0004-6361/202037850'
 
-    #with runner.isolated_filesystem(), requests_mock.mock() as m:    
-    with runner.isolated_filesystem():    
+    with runner.isolated_filesystem(), requests_mock.mock() as m:    
+        m.get('https://doi.org/10.1051/0004-6361/202037850', json=cslfor_202037850)
         runner.invoke(init, [doi, '--experimental', '--cff_fn', 'CITATION.cff'], catch_exceptions=False)
 
         with open('CITATION.cff', 'r') as f:
