@@ -250,7 +250,7 @@ def zenodo_1194353():
 def cff_1200251():
     return '''# YAML 1.2
 # Metadata for citation of this software according to the CFF format (https://citation-file-format.github.io/)
-cff-version: 1.0.3
+cff-version: 1.2.0
 message: If you use this software, please cite it using these metadata.
 # FIXME title as repository name might not be the best name, please make human readable
 title: Xenon
@@ -304,7 +304,7 @@ license: Apache-2.0
 def cff_1194353():
     return '''# YAML 1.2
 # Metadata for citation of this software according to the CFF format (https://citation-file-format.github.io/)
-cff-version: 1.0.3
+cff-version: 1.2.0
 message: If you use this software, please cite it using these metadata.
 # FIXME title as repository name might not be the best name, please make human readable
 title: 'NLeSC/Xenon: This is release 2.6.0 of Xenon.'
@@ -357,7 +357,7 @@ license: Apache-2.0
 def cff_1194353_updated_1200251():
     return '''# YAML 1.2
 # Metadata for citation of this software according to the CFF format (https://citation-file-format.github.io/)
-cff-version: 1.0.3
+cff-version: 1.2.0
 message: If you use this software, please cite it using these metadata.
 # FIXME title as repository name might not be the best name, please make human readable
 title: 'NLeSC/Xenon: This is release 2.6.0 of Xenon.'
@@ -496,7 +496,7 @@ def zenodo_1197761():
 def cff_1197761():
     return '''# YAML 1.2
 # Metadata for citation of this software according to the CFF format (https://citation-file-format.github.io/)
-cff-version: 1.0.3
+cff-version: 1.2.0
 message: If you use this software, please cite it using these metadata.
 # FIXME title as repository name might not be the best name, please make human readable
 title: Xenon gRPC server
@@ -517,7 +517,7 @@ date-released: 2018-03-14
 repository-code: https://github.com/NLeSC/xenon-grpc
 license: Apache-2.0
 references:
--  # FIXME generic is too generic, see https://citation-file-format.github.io/1.0.3/specifications/#/reference-types for more specific types
+-  # FIXME generic is too generic, see https://citation-file-format.github.io/1.2.0/specifications/#/reference-types for more specific types
   type: generic
   doi: 10.5281/zenodo.597993
   title: Xenon
@@ -991,7 +991,7 @@ def cslfor_58369():
 def cff_58369():
     return '''# YAML 1.2
 # Metadata for citation of this software according to the CFF format (https://citation-file-format.github.io/)
-cff-version: 1.0.3
+cff-version: 1.2.0
 message: If you use this software, please cite it using these metadata.
 # FIXME title as repository name might not be the best name, please make human readable
 title: 'knime-sstea: v1.0.5'
@@ -1007,7 +1007,7 @@ date-released: 2016-07-21
 repository-code: https://github.com/3D-e-Chem/knime-sstea
 license: Apache-2.0
 references:
--  # FIXME generic is too generic, see https://citation-file-format.github.io/1.0.3/specifications/#/reference-types for more specific types
+-  # FIXME generic is too generic, see https://citation-file-format.github.io/1.2.0/specifications/#/reference-types for more specific types
   type: generic
   doi: 10.1186/1471-2105-12-332
   title: 'ss-TEA: Entropy based identification of receptor specific ligand binding
@@ -1034,7 +1034,7 @@ references:
 def cff_202037850():
   return '''# YAML 1.2
 # Metadata for citation of this software according to the CFF format (https://citation-file-format.github.io/)
-cff-version: 1.0.3
+cff-version: 1.2.0
 message: If you use this software, please cite it using these metadata.
 # FIXME title as repository name might not be the best name, please make human readable
 title: Online data analysis system of the INTEGRAL telescope
@@ -1072,7 +1072,7 @@ license:
 def cff_aa8f94():
   return '''# YAML 1.2
 # Metadata for citation of this software according to the CFF format (https://citation-file-format.github.io/)
-cff-version: 1.0.3
+cff-version: 1.2.0
 message: If you use this software, please cite it using these metadata.
 # FIXME title as repository name might not be the best name, please make human readable
 title: "INTEGRAL\\n                    Detection of the First Prompt Gamma-Ray Signal Coincident with the Gravitational-wave Event GW170817"

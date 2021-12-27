@@ -47,7 +47,7 @@ def zenodo_record_to_cff_yaml(zenodo_record: dict, template) -> Tuple[ruamel.yam
     data['authors'] = authors_of_zenodo(zenodo_record)
     references = references_of_zenodo(zenodo_record)
     fixme = 'FIXME generic is too generic, ' \
-            'see https://citation-file-format.github.io/1.0.3/specifications/#/reference-types for more specific types'
+            'see https://citation-file-format.github.io/1.2.0/specifications/#/reference-types for more specific types'
     if references:
         data['references'] = yaml.seq(references)
         for idx, r in enumerate(references):
@@ -58,7 +58,6 @@ def zenodo_record_to_cff_yaml(zenodo_record: dict, template) -> Tuple[ruamel.yam
 
 
 def csljson_to_cff_yaml(cffjson: dict, template) -> Tuple[ruamel.yaml.YAML, Any]:
-    # TODO: to complete, see version and so!
     yaml = ruamel.yaml.YAML()
     data = yaml.load(template)
 
@@ -73,7 +72,7 @@ def csljson_to_cff_yaml(cffjson: dict, template) -> Tuple[ruamel.yaml.YAML, Any]
 
     references = cffjson.get('reference', None)
     fixme = 'FIXME generic is too generic, ' \
-            'see https://citation-file-format.github.io/1.0.3/specifications/#/reference-types for more specific types'
+            'see https://citation-file-format.github.io/1.2.0/specifications/#/reference-types for more specific types'
     if references:
         data['references'] = yaml.seq(references)
         for idx, r in enumerate(references):
@@ -107,7 +106,7 @@ def init(doi, cff_fn, experimental):
     """
     template = '''# YAML 1.2
 # Metadata for citation of this software according to the CFF format (https://citation-file-format.github.io/)
-cff-version: 1.0.3
+cff-version: 1.2.0
 message: If you use this software, please cite it using these metadata.
 # FIXME title as repository name might not be the best name, please make human readable
 title: x
@@ -156,6 +155,12 @@ def update(doi, cff_fn):
 
     * DOI, The Digital Object Identifier (DOI) name of a Zenodo upload of a GitHub release
     """
+
+    if not doi_is_from_zenodo(doi):
+        raise click.UsageError('CITATION.cff update is only possible with Zenodo DOI. '
+                               'For non-Zenodo DOIs, please consider recreating the citation, enabling experimental features: '
+                               '`doi2cff init <doi> --experimental`')
+
     update_version(doi, cff_fn)
 
 
