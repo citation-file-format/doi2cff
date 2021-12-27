@@ -1028,3 +1028,434 @@ references:
   - given-names: Jan PG
     family-names: Klomp
 '''
+
+
+@pytest.fixture
+def cff_202037850():
+  return '''# YAML 1.2
+# Metadata for citation of this software according to the CFF format (https://citation-file-format.github.io/)
+cff-version: 1.0.3
+message: If you use this software, please cite it using these metadata.
+# FIXME title as repository name might not be the best name, please make human readable
+title: Online data analysis system of the INTEGRAL telescope
+doi: 10.1051/0004-6361/202037850
+# FIXME splitting of full names is error prone, please check if given/family name are correct
+authors:
+- given-names: A.
+  family-names: Neronov
+- given-names: V.
+  family-names: Savchenko
+- given-names: A.
+  family-names: Tramacere
+- given-names: M.
+  family-names: Meharga
+- given-names: C.
+  family-names: Ferrigno
+- given-names: S.
+  family-names: Paltani
+version: x
+date-released: 2021-04-27
+repository-code: x
+license:
+- start:
+    date-parts:
+    - - 2021
+      - 4
+      - 27
+    date-time: '2021-04-27T00:00:00Z'
+    timestamp: 1619481600000
+  content-version: vor
+  delay-in-days: 0
+  URL: https://www.edpsciences.org/en/authors/copyright-and-licensing
+'''
+
+
+@pytest.fixture
+def cff_aa8f94():
+  return '''# YAML 1.2
+# Metadata for citation of this software according to the CFF format (https://citation-file-format.github.io/)
+cff-version: 1.0.3
+message: If you use this software, please cite it using these metadata.
+# FIXME title as repository name might not be the best name, please make human readable
+title: "INTEGRAL\\n                    Detection of the First Prompt Gamma-Ray Signal Coincident with the Gravitational-wave Event GW170817"
+doi: 10.3847/2041-8213/aa8f94
+# FIXME splitting of full names is error prone, please check if given/family name are correct
+authors:
+- given-names: V.
+  family-names: Savchenko
+- given-names: C.
+  family-names: Ferrigno
+- given-names: E.
+  family-names: Kuulkers
+- given-names: A.
+  family-names: Bazzano
+- given-names: E.
+  family-names: Bozzo
+- given-names: S.
+  family-names: Brandt
+- given-names: J.
+  family-names: Chenevez
+- given-names: T. J.-L.
+  family-names: Courvoisier
+- given-names: R.
+  family-names: Diehl
+- given-names: A.
+  family-names: Domingo
+- given-names: L.
+  family-names: Hanlon
+- given-names: E.
+  family-names: Jourdain
+- given-names: A.
+  family-names: von Kienlin
+- given-names: P.
+  family-names: Laurent
+- given-names: F.
+  family-names: Lebrun
+- given-names: A.
+  family-names: Lutovinov
+- given-names: A.
+  family-names: Martin-Carrillo
+- given-names: S.
+  family-names: Mereghetti
+- given-names: L.
+  family-names: Natalucci
+- given-names: J.
+  family-names: Rodi
+- given-names: J.-P.
+  family-names: Roques
+- given-names: R.
+  family-names: Sunyaev
+- given-names: P.
+  family-names: Ubertini
+version: x
+date-released: 2017-10-16
+repository-code: x
+license:
+- start:
+    date-parts:
+    - - 2017
+      - 10
+      - 16
+    date-time: '2017-10-16T00:00:00Z'
+    timestamp: 1508112000000
+  content-version: tdm
+  delay-in-days: 0
+  URL: http://iopscience.iop.org/info/page/text-and-data-mining
+- start:
+    date-parts:
+    - - 2017
+      - 10
+      - 16
+    date-time: '2017-10-16T00:00:00Z'
+    timestamp: 1508112000000
+  content-version: vor
+  delay-in-days: 0
+  URL: http://iopscience.iop.org/page/copyright
+references:
+- key: '1'
+  doi-asserted-by: publisher
+  DOI: 10.1103/PhysRevLett.116.061102
+- key: '2'
+  doi-asserted-by: publisher
+  DOI: 10.1103/PhysRevLett.116.241103
+- key: '3'
+  doi-asserted-by: publisher
+  DOI: 10.1007/lrr-2016-1
+- key: '4'
+  doi-asserted-by: publisher
+  DOI: 10.1103/PhysRevLett.118.221101
+- key: '5'
+  doi-asserted-by: publisher
+  DOI: 10.1103/PhysRevLett.119.161101
+- key: '6'
+  doi-asserted-by: publisher
+  DOI: 10.1088/0264-9381/32/2/024001
+  volume: '32'
+  author: Acernese F.
+  year: '2015'
+  journal-title: CQGra
+  ISSN: http://id.crossref.org/issn/0264-9381
+  issn-type: print
+- key: '7'
+  doi-asserted-by: publisher
+  DOI: 10.1146/annurev-astro-081913-035926
+- key: '8'
+  first-page: '177'
+  volume: '10'
+  author: Blinnikov S. I.
+  year: '1984'
+  journal-title: SvAL
+- key: '9'
+  first-page: '21505'
+  author: Connaughton V.
+  year: '2017'
+  journal-title: GCN
+  issn-type: print
+  ISSN: http://id.crossref.org/issn/0147-0728
+- key: '10'
+  first-page: '21529'
+  author: Coulter D. A.
+  year: '2017'
+  journal-title: GCN
+  issn-type: print
+  ISSN: http://id.crossref.org/issn/0147-0728
+- key: '11'
+  doi-asserted-by: publisher
+  first-page: '790'
+  DOI: 10.1086/510201
+  volume: '655'
+  author: Crook A. C.
+  year: '2007'
+  journal-title: ApJ
+  ISSN: http://id.crossref.org/issn/0004-637X
+  issn-type: print
+- key: '12'
+  doi-asserted-by: publisher
+  DOI: 10.1016/j.jheap.2015.07.002
+- key: '13'
+  volume: '21592'
+  author: D’Elia V.
+  year: '2017'
+  journal-title: GCN
+  issn-type: print
+  ISSN: http://id.crossref.org/issn/0147-0728
+- key: '14'
+  first-page: '21530'
+  author: DESGW+Community Team
+  year: '2017'
+  journal-title: GCN
+  issn-type: print
+  ISSN: http://id.crossref.org/issn/0147-0728
+- key: '15'
+  first-page: '21550'
+  author: Evans P. A.
+  year: '2017'
+  journal-title: GCN
+  issn-type: print
+  ISSN: http://id.crossref.org/issn/0147-0728
+- key: '16'
+  doi-asserted-by: publisher
+  DOI: 10.1146/annurev-nucl-102115-044819
+- key: '17'
+  first-page: '21557'
+  author: Foley R.
+  year: '2017'
+  journal-title: GCN
+  issn-type: print
+  ISSN: http://id.crossref.org/issn/0147-0728
+- key: '18'
+  doi-asserted-by: publisher
+  DOI: 10.1126/science.1216793
+- key: '19'
+  doi-asserted-by: publisher
+  first-page: '39'
+  DOI: 10.1088/0004-637X/809/1/39
+  volume: '809'
+  author: Giacomazzo B.
+  year: '2015'
+  journal-title: ApJ
+  ISSN: http://id.crossref.org/issn/0004-637X
+  issn-type: print
+- key: '20'
+  doi-asserted-by: publisher
+  DOI: 10.3847/2041-8213/aa8f41
+- key: '21'
+  doi-asserted-by: publisher
+  first-page: '759'
+  DOI: 10.1086/427976
+  volume: '622'
+  author: Górski K. M.
+  year: '2005'
+  journal-title: ApJ
+  ISSN: http://id.crossref.org/issn/0004-637X
+  issn-type: print
+- key: '22'
+  doi-asserted-by: publisher
+  DOI: 10.1093/mnras/stw404
+- key: '23'
+  doi-asserted-by: publisher
+  DOI: 10.1038/nature03519
+- key: '24'
+  doi-asserted-by: publisher
+  DOI: 10.1051/0004-6361:20031356
+- key: '25'
+  doi-asserted-by: publisher
+  DOI: 10.1051/0004-6361:20031367
+- key: '26'
+  doi-asserted-by: publisher
+  volume: '32'
+  author: LIGO Scientific Collaboration
+  year: '2015'
+  journal-title: CQGra
+  DOI: 10.1088/0264-9381/32/7/074001
+- key: '27'
+  first-page: '21505'
+  author: LIGO Scientific Collaboration & Virgo Collaboration
+  year: '2017'
+  journal-title: GCN
+  issn-type: print
+  ISSN: http://id.crossref.org/issn/0147-0728
+- key: '28'
+  first-page: '21513'
+  author: LIGO Scientific Collaboration & Virgo Collaboration
+  year: '2017'
+  journal-title: GCN
+  issn-type: print
+  ISSN: http://id.crossref.org/issn/0147-0728
+- key: '29'
+  first-page: '21527'
+  author: LIGO Scientific Collaboration & Virgo Collaboration
+  year: '2017'
+  journal-title: GCN
+  issn-type: print
+  ISSN: http://id.crossref.org/issn/0147-0728
+- key: '30'
+  first-page: '21509'
+  author: LIGO Scientific Collaboration & Virgo Collaboration
+  year: '2017'
+  journal-title: GCN
+  issn-type: print
+  ISSN: http://id.crossref.org/issn/0147-0728
+- key: '31'
+  first-page: '21474'
+  author: LIGO Scientific Collaboration & Virgo Collaboration
+  year: '2017'
+  journal-title: GCN
+  issn-type: print
+  ISSN: http://id.crossref.org/issn/0147-0728
+- key: '32'
+  doi-asserted-by: publisher
+  DOI: 10.1051/0004-6361:20031358
+- key: '33'
+  author: LVC
+  year: '2017'
+  journal-title: ApJL
+  issn-type: print
+  ISSN: http://id.crossref.org/issn/0004-637X
+- key: '34'
+  first-page: '21582'
+  author: Lyman J.
+  year: '2017'
+  journal-title: GCN
+  issn-type: print
+  ISSN: http://id.crossref.org/issn/0147-0728
+- key: '35'
+  doi-asserted-by: publisher
+  DOI: 10.1093/mnras/276.1.273
+- key: '36'
+  doi-asserted-by: publisher
+  DOI: 10.1051/0004-6361:20031418
+- key: '37'
+  doi-asserted-by: publisher
+  first-page: L74
+  DOI: 10.1088/0004-637X/696/1/L74
+  volume: '696'
+  author: Mereghetti S.
+  year: '2009'
+  journal-title: ApJL
+  ISSN: http://id.crossref.org/issn/0004-637X
+  issn-type: print
+- key: '38'
+  doi-asserted-by: publisher
+  DOI: 10.1007/s41114-017-0006-z
+- key: '39'
+  doi-asserted-by: publisher
+  DOI: 10.1093/mnras/stu247
+- key: '40'
+  doi-asserted-by: publisher
+  DOI: 10.1016/j.physrep.2007.02.005
+- key: '41'
+  doi-asserted-by: publisher
+  DOI: 10.1126/science.1125201
+- key: '42'
+  doi-asserted-by: publisher
+  first-page: '15'
+  DOI: 10.1088/0004-637X/763/1/15
+  volume: '763'
+  author: Qin Y.
+  year: '2013'
+  journal-title: ApJ
+  ISSN: http://id.crossref.org/issn/0004-637X
+  issn-type: print
+- key: '43'
+  doi-asserted-by: publisher
+  DOI: 10.1051/0004-6361:20031259
+- key: '44'
+  doi-asserted-by: publisher
+  DOI: 10.1093/mnras/sts683
+- key: '45'
+  doi-asserted-by: publisher
+  DOI: 10.1051/0004-6361/201730572
+- key: '46'
+  first-page: '21507'
+  author: Savchenko V.
+  year: '2017'
+  journal-title: GCN
+  issn-type: print
+  ISSN: http://id.crossref.org/issn/0147-0728
+- key: '47'
+  doi-asserted-by: publisher
+  DOI: 10.1051/0004-6361/200911988
+- key: '48'
+  doi-asserted-by: publisher
+  DOI: 10.1051/0004-6361/201218877
+- key: '49'
+  doi-asserted-by: publisher
+  DOI: 10.3847/2041-8213/aa905e
+- key: '50'
+  doi-asserted-by: publisher
+  DOI: 10.3847/2041-8213/aa9059
+- key: '51'
+  doi-asserted-by: publisher
+  DOI: 10.1093/mnras/227.2.403
+- key: '52'
+  first-page: '21515'
+  author: Svinkin D.
+  year: '2017'
+  journal-title: GCN
+  issn-type: print
+  ISSN: http://id.crossref.org/issn/0147-0728
+- key: '53'
+  author: Tanaka M.
+  year: '2017'
+  journal-title: ApJ
+- key: '54'
+  doi-asserted-by: publisher
+  DOI: 10.1038/nature24290
+- key: '55'
+  first-page: '21682'
+  author: Troja E.
+  year: '2017'
+  journal-title: GCN
+  issn-type: print
+  ISSN: http://id.crossref.org/issn/0147-0728
+- key: '56'
+  doi-asserted-by: publisher
+  DOI: 10.1051/0004-6361:20031224
+- key: '57'
+  doi-asserted-by: publisher
+  DOI: 10.3847/2041-8213/aa8edf
+- key: '58'
+  doi-asserted-by: publisher
+  DOI: 10.1051/0004-6361:20031482
+- key: '59'
+  doi-asserted-by: publisher
+  DOI: 10.1051/0004-6361:20031231
+- key: '60'
+  volume: '21520'
+  author: von Kienlin A.
+  year: '2017'
+  journal-title: GCN
+  issn-type: print
+  ISSN: http://id.crossref.org/issn/0147-0728
+- key: '61'
+  doi-asserted-by: publisher
+  DOI: 10.1051/0004-6361:20031288
+- key: '62'
+  first-page: '21531'
+  author: Yang S.
+  year: '2017'
+  journal-title: GCN
+  issn-type: print
+  ISSN: http://id.crossref.org/issn/0147-0728
+'''

@@ -53,27 +53,32 @@ def zenodo_record_to_cff_yaml(zenodo_record: dict, template) -> Tuple[ruamel.yam
         for idx, r in enumerate(references):
             if r['type'] == 'generic':
                 data['references'].yaml_add_eol_comment(fixme, idx)
-    
+
     return yaml, data
 
 
 def csljson_to_cff_yaml(cffjson: dict, template) -> Tuple[ruamel.yaml.YAML, Any]:
-    # TODO: to complete!
+    # TODO: to complete, see version and so!
     yaml = ruamel.yaml.YAML()
     data = yaml.load(template)
 
     data['title'] = cffjson['title']
+    #TODO: warn for multi-line
+
     data['doi'] = cffjson['DOI']
     data['license'] = cffjson['license']
-    data['date-released'] = datetime(*cffjson['published-print']['date-parts'][0], 1).date()
+    data['date-released'] = datetime(*cffjson['published']['date-parts'][0], 1).date()
     data['authors'] = authors_of_csl(cffjson)
-    references = cffjson['reference']
+
+    references = cffjson.get('reference', None)
+    fixme = 'FIXME generic is too generic, ' \
+            'see https://citation-file-format.github.io/1.0.3/specifications/#/reference-types for more specific types'
     if references:
         data['references'] = yaml.seq(references)
-        # for idx, r in enumerate(references):
-        #     if r['type'] == 'generic':
-        #         data['references'].yaml_add_eol_comment(fixme, idx)
-    
+        for idx, r in enumerate(references):
+            if r.get('type', 'generic') == 'generic':
+                data['references'].yaml_add_eol_comment(fixme, idx)
+
     return yaml, data
 
 
@@ -113,21 +118,20 @@ license: x
         zenodo_record = fetch_zenodo_by_doiurl(doi)
 
         if not is_software_zenodo(zenodo_record):
-            raise click.UsageError('Unable to process DOI name, only accept DOI name which is a Zenodo upload of type software')
+            raise click.UsageError('Unable to process DOI name, only accept DOI name '
+                                   'which is a Zenodo upload of type software')
 
-        yaml, data = zenodo_record_to_cff_yaml(zenodo_record, template)        
+        yaml, data = zenodo_record_to_cff_yaml(zenodo_record, template)
     else:
         if experimental:
             click.echo("Trying experimental parsing of arbitrary DOI")
             csljson = fetch_csljson(doi)
-
-            ruamel.yaml.dump(csljson, open("/tmp/csl.json", "w"))
-
-            yaml, data = csljson_to_cff_yaml(csljson, template)        
+            yaml, data = csljson_to_cff_yaml(csljson, template)
         else:
-            raise click.UsageError('Unable to process DOI name, normally we only accept DOI name which is a Zenodo upload'
-                                   'You can try experimental parsing of other DOIs (see --experimental option).')
-    
+            raise click.UsageError('Unable to process DOI name, normally we only accept DOI name '
+                                   'which is a Zenodo upload'
+                                   'You can try experimental parsing of other DOIs '
+                                   '(see --experimental option).')
 
     yaml.dump(data, cff_fn)
 
