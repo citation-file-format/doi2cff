@@ -1053,9 +1053,7 @@ authors:
   family-names: Ferrigno
 - given-names: S.
   family-names: Paltani
-version: x
 date-released: 2021-04-27
-repository-code: x
 license:
 - start:
     date-parts:
@@ -1127,9 +1125,7 @@ authors:
   family-names: Sunyaev
 - given-names: P.
   family-names: Ubertini
-version: x
 date-released: 2017-10-16
-repository-code: x
 license:
 - start:
     date-parts:

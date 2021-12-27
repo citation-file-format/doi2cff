@@ -63,7 +63,8 @@ def csljson_to_cff_yaml(cffjson: dict, template) -> Tuple[ruamel.yaml.YAML, Any]
     data = yaml.load(template)
 
     data['title'] = cffjson['title']
-    #TODO: warn for multi-line
+    if '\n' in data['title']:
+        data.yaml_add_eol_comment("FIXME: title contains new line: this is strange", "title")
 
     data['doi'] = cffjson['DOI']
     data['license'] = cffjson['license']
@@ -78,6 +79,11 @@ def csljson_to_cff_yaml(cffjson: dict, template) -> Tuple[ruamel.yaml.YAML, Any]
         for idx, r in enumerate(references):
             if r.get('type', 'generic') == 'generic':
                 data['references'].yaml_add_eol_comment(fixme, idx)
+
+    # In CFF 1.2.0 these fields are optional
+    # https://github.com/citation-file-format/citation-file-format/releases/tag/1.2.0
+    del data['version']
+    del data['repository-code']    
 
     return yaml, data
 
