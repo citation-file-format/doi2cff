@@ -5,7 +5,7 @@
 from io import StringIO
 
 import pytest
-import yaml
+import ruamel.yaml
 
 from click.testing import CliRunner
 import requests_mock
@@ -13,6 +13,7 @@ import requests_mock
 from doi2cff import cli
 from doi2cff.cli import init, update_version
 
+yaml = ruamel.yaml.YAML(typ='safe', pure=True)
 
 @pytest.fixture
 def runner():
@@ -87,10 +88,42 @@ def test_init_withnonzenodoref(runner, zenodo_58369, cslfor_58369, cff_58369):
         m.get('https://zenodo.org/api/records/58369', json=zenodo_58369)
         m.get('https://doi.org/10.1186/1471-2105-12-332', json=cslfor_58369)
 
-        runner.invoke(init, [doi])
+        runner_result = runner.invoke(init, [doi])
+        assert 'Trying experimental parsing of arbitrary DOI' not in runner_result.output
 
         with open('CITATION.cff', 'r') as f:
             result = f.read()
 
     expected = cff_58369
     assert yaml.load(result) == yaml.load(expected)
+
+
+
+def test_init_csl_noref(runner, cff_202037850, cslfor_202037850):
+    doi = '10.1051/0004-6361/202037850'
+
+    with runner.isolated_filesystem(), requests_mock.mock() as m:    
+        m.get('https://doi.org/10.1051/0004-6361/202037850', json=cslfor_202037850)
+
+        runner_result = runner.invoke(init, [doi, '--experimental', '--cff_fn', 'CITATION.cff'], catch_exceptions=False)
+        assert 'Trying experimental parsing of arbitrary DOI' in runner_result.output
+
+        with open('CITATION.cff', 'r') as f:
+            result = f.read()
+
+    assert yaml.load(result) == yaml.load(cff_202037850)
+
+
+def test_init_csl_nolicense(runner, cff_1995729, cslfor_1995729):
+    # TODO: complete!    
+    doi = '10.1063/1.1995729'
+
+    with runner.isolated_filesystem(), requests_mock.mock() as m:    
+        m.get('https://doi.org/10.1063/1.1995729', json=cslfor_1995729)
+        runner.invoke(init, [doi, '--experimental', '--cff_fn', 'CITATION.cff'], catch_exceptions=False)
+
+        with open('CITATION.cff', 'r') as f:
+            result = f.read()
+
+    assert yaml.load(result) == yaml.load(cff_1995729)
+

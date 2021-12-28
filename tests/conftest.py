@@ -250,7 +250,7 @@ def zenodo_1194353():
 def cff_1200251():
     return '''# YAML 1.2
 # Metadata for citation of this software according to the CFF format (https://citation-file-format.github.io/)
-cff-version: 1.0.3
+cff-version: 1.2.0
 message: If you use this software, please cite it using these metadata.
 # FIXME title as repository name might not be the best name, please make human readable
 title: Xenon
@@ -304,7 +304,7 @@ license: Apache-2.0
 def cff_1194353():
     return '''# YAML 1.2
 # Metadata for citation of this software according to the CFF format (https://citation-file-format.github.io/)
-cff-version: 1.0.3
+cff-version: 1.2.0
 message: If you use this software, please cite it using these metadata.
 # FIXME title as repository name might not be the best name, please make human readable
 title: 'NLeSC/Xenon: This is release 2.6.0 of Xenon.'
@@ -357,7 +357,7 @@ license: Apache-2.0
 def cff_1194353_updated_1200251():
     return '''# YAML 1.2
 # Metadata for citation of this software according to the CFF format (https://citation-file-format.github.io/)
-cff-version: 1.0.3
+cff-version: 1.2.0
 message: If you use this software, please cite it using these metadata.
 # FIXME title as repository name might not be the best name, please make human readable
 title: 'NLeSC/Xenon: This is release 2.6.0 of Xenon.'
@@ -496,7 +496,7 @@ def zenodo_1197761():
 def cff_1197761():
     return '''# YAML 1.2
 # Metadata for citation of this software according to the CFF format (https://citation-file-format.github.io/)
-cff-version: 1.0.3
+cff-version: 1.2.0
 message: If you use this software, please cite it using these metadata.
 # FIXME title as repository name might not be the best name, please make human readable
 title: Xenon gRPC server
@@ -517,7 +517,7 @@ date-released: 2018-03-14
 repository-code: https://github.com/NLeSC/xenon-grpc
 license: Apache-2.0
 references:
--  # FIXME generic is too generic, see https://citation-file-format.github.io/1.0.3/specifications/#/reference-types for more specific types
+-  # FIXME generic is too generic, see https://citation-file-format.github.io/1.2.0/specifications/#/reference-types for more specific types
   type: generic
   doi: 10.5281/zenodo.597993
   title: Xenon
@@ -991,7 +991,7 @@ def cslfor_58369():
 def cff_58369():
     return '''# YAML 1.2
 # Metadata for citation of this software according to the CFF format (https://citation-file-format.github.io/)
-cff-version: 1.0.3
+cff-version: 1.2.0
 message: If you use this software, please cite it using these metadata.
 # FIXME title as repository name might not be the best name, please make human readable
 title: 'knime-sstea: v1.0.5'
@@ -1007,7 +1007,7 @@ date-released: 2016-07-21
 repository-code: https://github.com/3D-e-Chem/knime-sstea
 license: Apache-2.0
 references:
--  # FIXME generic is too generic, see https://citation-file-format.github.io/1.0.3/specifications/#/reference-types for more specific types
+-  # FIXME generic is too generic, see https://citation-file-format.github.io/1.2.0/specifications/#/reference-types for more specific types
   type: generic
   doi: 10.1186/1471-2105-12-332
   title: 'ss-TEA: Entropy based identification of receptor specific ligand binding
@@ -1028,3 +1028,391 @@ references:
   - given-names: Jan PG
     family-names: Klomp
 '''
+
+
+@pytest.fixture
+def cff_202037850():
+  return '''# YAML 1.2
+# Metadata for citation of this software according to the CFF format (https://citation-file-format.github.io/)
+cff-version: 1.2.0
+message: If you use this software, please cite it using these metadata.
+# FIXME title as repository name might not be the best name, please make human readable
+title: Online data analysis system of the INTEGRAL telescope
+doi: 10.1051/0004-6361/202037850
+# FIXME splitting of full names is error prone, please check if given/family name are correct
+authors:
+- given-names: A.
+  family-names: Neronov
+- given-names: V.
+  family-names: Savchenko
+- given-names: A.
+  family-names: Tramacere
+- given-names: M.
+  family-names: Meharga
+- given-names: C.
+  family-names: Ferrigno
+- given-names: S.
+  family-names: Paltani
+date-released: 2021-04-27
+license:
+- start:
+    date-parts:
+    - - 2021
+      - 4
+      - 27
+    date-time: '2021-04-27T00:00:00Z'
+    timestamp: 1619481600000
+  content-version: vor
+  delay-in-days: 0
+  URL: https://www.edpsciences.org/en/authors/copyright-and-licensing
+'''
+
+
+@pytest.fixture
+def cslfor_202037850():
+    """Content was generated with:
+
+    curl -L -H 'Accept: application/vnd.citationstyles.csl+json'  \
+      https://doi.org/10.1051/0004-6361/202037850
+    """
+    return {
+  "indexed": {
+    "date-parts": [
+      [
+        2021,
+        12,
+        9
+      ]
+    ],
+    "date-time": "2021-12-09T19:25:39Z",
+    "timestamp": 1639077939575
+  },
+  "reference-count": 0,
+  "publisher": "EDP Sciences",
+  "license": [
+    {
+      "start": {
+        "date-parts": [
+          [
+            2021,
+            4,
+            27
+          ]
+        ],
+        "date-time": "2021-04-27T00:00:00Z",
+        "timestamp": 1619481600000
+      },
+      "content-version": "vor",
+      "delay-in-days": 0,
+      "URL": "https://www.edpsciences.org/en/authors/copyright-and-licensing"
+    }
+  ],
+  "content-domain": {
+    "domain": [],
+    "crossmark-restriction": False
+  },
+  "accepted": {
+    "date-parts": [
+      [
+        2021,
+        3,
+        8
+      ]
+    ]
+  },
+  "DOI": "10.1051/0004-6361/202037850",
+  "type": "journal-article",
+  "created": {
+    "date-parts": [
+      [
+        2021,
+        4,
+        27
+      ]
+    ],
+    "date-time": "2021-04-27T08:30:49Z",
+    "timestamp": 1619512249000
+  },
+  "source": "Crossref",
+  "is-referenced-by-count": 0,
+  "title": "Online data analysis system of the INTEGRAL telescope",
+  "prefix": "10.1051",
+  "author": [
+    {
+      "given": "A.",
+      "family": "Neronov",
+      "sequence": "first",
+      "affiliation": []
+    },
+    {
+      "given": "V.",
+      "family": "Savchenko",
+      "sequence": "additional",
+      "affiliation": []
+    },
+    {
+      "given": "A.",
+      "family": "Tramacere",
+      "sequence": "additional",
+      "affiliation": []
+    },
+    {
+      "given": "M.",
+      "family": "Meharga",
+      "sequence": "additional",
+      "affiliation": []
+    },
+    {
+      "given": "C.",
+      "family": "Ferrigno",
+      "sequence": "additional",
+      "affiliation": []
+    },
+    {
+      "given": "S.",
+      "family": "Paltani",
+      "sequence": "additional",
+      "affiliation": []
+    }
+  ],
+  "member": "250",
+  "published-online": {
+    "date-parts": [
+      [
+        2021,
+        4,
+        27
+      ]
+    ]
+  },
+  "container-title": "Astronomy & Astrophysics",
+  "original-title": [],
+  "link": [
+    {
+      "URL": "https://www.aanda.org/10.1051/0004-6361/202037850/pdf",
+      "content-type": "unspecified",
+      "content-version": "vor",
+      "intended-application": "similarity-checking"
+    }
+  ],
+  "deposited": {
+    "date-parts": [
+      [
+        2021,
+        6,
+        1
+      ]
+    ],
+    "date-time": "2021-06-01T18:58:58Z",
+    "timestamp": 1622573938000
+  },
+  "score": 1,
+  "subtitle": [],
+  "short-title": [],
+  "issued": {
+    "date-parts": [
+      [
+        2021,
+        4,
+        27
+      ]
+    ]
+  },
+  "references-count": 0,
+  "alternative-id": [
+    "aa37850-20"
+  ],
+  "URL": "http://dx.doi.org/10.1051/0004-6361/202037850",
+  "relation": {},
+  "ISSN": [
+    "0004-6361",
+    "1432-0746"
+  ],
+  "subject": [
+    "Space and Planetary Science",
+    "Astronomy and Astrophysics"
+  ],
+  "container-title-short": "A&A",
+  "published": {
+    "date-parts": [
+      [
+        2021,
+        4,
+        27
+      ]
+    ]
+  }
+}
+
+
+
+@pytest.fixture
+def cff_1995729():
+  return '''# YAML 1.2
+# Metadata for citation of this software according to the CFF format (https://citation-file-format.github.io/)
+cff-version: 1.2.0
+message: If you use this software, please cite it using these metadata.
+# FIXME title as repository name might not be the best name, please make human readable
+title: Albert Einstein to Max Born                   1
+doi: 10.1063/1.1995729
+# FIXME splitting of full names is error prone, please check if given/family name are correct
+authors:
+- given-names: Albert
+  family-names: Einstein
+date-released: 2005-05-01
+license: x
+references:
+-  # FIXME generic is too generic, see https://citation-file-format.github.io/1.2.0/specifications/#/reference-types for more specific types
+  key: c1
+  unstructured: 'M. Born , The Born–Einstein Letters 1916–1955: Freindship, Politics
+    and Physics in Uncertain Times, Macmillan, New York (2005), p. 88. Original letter
+    © The Hebrew University of Jerusalem, Israel.'
+- # FIXME generic is too generic, see https://citation-file-format.github.io/1.2.0/specifications/#/reference-types for more specific types
+  key: c2
+  volume-title: 'The End of the Uncertain World: The Life and Science of Max Born'
+  author: Greenspan N. T.
+  year: '2005'
+'''
+
+
+@pytest.fixture
+def cslfor_1995729():
+    """Content was generated with:
+
+    curl -L -H 'Accept: application/vnd.citationstyles.csl+json'  \
+      https://doi.org/10.1063/1.1995729
+    """
+    return {
+  "indexed": {
+    "date-parts": [
+      [
+        2021,
+        12,
+        16
+      ]
+    ],
+    "date-time": "2021-12-16T18:54:42Z",
+    "timestamp": 1639680882985
+  },
+  "reference-count": 2,
+  "publisher": "AIP Publishing",
+  "issue": "5",
+  "content-domain": {
+    "domain": [],
+    "crossmark-restriction": True
+  },
+  "published-print": {
+    "date-parts": [
+      [
+        2005,
+        5
+      ]
+    ]
+  },
+  "DOI": "10.1063/1.1995729",
+  "type": "journal-article",
+  "created": {
+    "date-parts": [
+      [
+        2007,
+        3,
+        13
+      ]
+    ],
+    "date-time": "2007-03-13T19:20:15Z",
+    "timestamp": 1173813615000
+  },
+  "page": "16-16",
+  "source": "Crossref",
+  "is-referenced-by-count": 0,
+  "title": "Albert Einstein to Max Born                   1",
+  "prefix": "10.1063",
+  "volume": "58",
+  "author": [
+    {
+      "given": "Albert",
+      "family": "Einstein",
+      "sequence": "first",
+      "affiliation": []
+    }
+  ],
+  "member": "317",
+  "reference": [
+    {
+      "key": "c1",
+      "unstructured": "M. Born , The Born–Einstein Letters 1916–1955: Freindship, Politics and Physics in Uncertain Times, Macmillan, New York (2005), p. 88. Original letter © The Hebrew University of Jerusalem, Israel."
+    },
+    {
+      "key": "c2",
+      "volume-title": "The End of the Uncertain World: The Life and Science of Max Born",
+      "author": "Greenspan N. T.",
+      "year": "2005"
+    }
+  ],
+  "container-title": "Physics Today",
+  "original-title": [],
+  "language": "en",
+  "link": [
+    {
+      "URL": "http://physicstoday.scitation.org/doi/pdf/10.1063/1.1995729",
+      "content-type": "unspecified",
+      "content-version": "vor",
+      "intended-application": "similarity-checking"
+    }
+  ],
+  "deposited": {
+    "date-parts": [
+      [
+        2016,
+        12,
+        28
+      ]
+    ],
+    "date-time": "2016-12-28T18:02:11Z",
+    "timestamp": 1482948131000
+  },
+  "score": 1,
+  "subtitle": [],
+  "short-title": [],
+  "issued": {
+    "date-parts": [
+      [
+        2005,
+        5
+      ]
+    ]
+  },
+  "references-count": 2,
+  "journal-issue": {
+    "issue": "5",
+    "published-print": {
+      "date-parts": [
+        [
+          2005,
+          5
+        ]
+      ]
+    }
+  },
+  "alternative-id": [
+    "10.1063/1.1995729"
+  ],
+  "URL": "http://dx.doi.org/10.1063/1.1995729",
+  "relation": {},
+  "ISSN": [
+    "0031-9228",
+    "1945-0699"
+  ],
+  "subject": [
+    "General Physics and Astronomy"
+  ],
+  "container-title-short": "Physics Today",
+  "published": {
+    "date-parts": [
+      [
+        2005,
+        5
+      ]
+    ]
+  }
+}
