@@ -1243,3 +1243,176 @@ def cslfor_202037850():
     ]
   }
 }
+
+
+
+@pytest.fixture
+def cff_1995729():
+  return '''# YAML 1.2
+# Metadata for citation of this software according to the CFF format (https://citation-file-format.github.io/)
+cff-version: 1.2.0
+message: If you use this software, please cite it using these metadata.
+# FIXME title as repository name might not be the best name, please make human readable
+title: Albert Einstein to Max Born                   1
+doi: 10.1063/1.1995729
+# FIXME splitting of full names is error prone, please check if given/family name are correct
+authors:
+- given-names: Albert
+  family-names: Einstein
+date-released: 2005-05-01
+license: x
+references:
+-  # FIXME generic is too generic, see https://citation-file-format.github.io/1.2.0/specifications/#/reference-types for more specific types
+  key: c1
+  unstructured: 'M. Born , The Born–Einstein Letters 1916–1955: Freindship, Politics
+    and Physics in Uncertain Times, Macmillan, New York (2005), p. 88. Original letter
+    © The Hebrew University of Jerusalem, Israel.'
+- # FIXME generic is too generic, see https://citation-file-format.github.io/1.2.0/specifications/#/reference-types for more specific types
+  key: c2
+  volume-title: 'The End of the Uncertain World: The Life and Science of Max Born'
+  author: Greenspan N. T.
+  year: '2005'
+'''
+
+
+@pytest.fixture
+def cslfor_1995729():
+    """Content was generated with:
+
+    curl -L -H 'Accept: application/vnd.citationstyles.csl+json'  \
+      https://doi.org/10.1063/1.1995729
+    """
+    return {
+  "indexed": {
+    "date-parts": [
+      [
+        2021,
+        12,
+        16
+      ]
+    ],
+    "date-time": "2021-12-16T18:54:42Z",
+    "timestamp": 1639680882985
+  },
+  "reference-count": 2,
+  "publisher": "AIP Publishing",
+  "issue": "5",
+  "content-domain": {
+    "domain": [],
+    "crossmark-restriction": True
+  },
+  "published-print": {
+    "date-parts": [
+      [
+        2005,
+        5
+      ]
+    ]
+  },
+  "DOI": "10.1063/1.1995729",
+  "type": "journal-article",
+  "created": {
+    "date-parts": [
+      [
+        2007,
+        3,
+        13
+      ]
+    ],
+    "date-time": "2007-03-13T19:20:15Z",
+    "timestamp": 1173813615000
+  },
+  "page": "16-16",
+  "source": "Crossref",
+  "is-referenced-by-count": 0,
+  "title": "Albert Einstein to Max Born                   1",
+  "prefix": "10.1063",
+  "volume": "58",
+  "author": [
+    {
+      "given": "Albert",
+      "family": "Einstein",
+      "sequence": "first",
+      "affiliation": []
+    }
+  ],
+  "member": "317",
+  "reference": [
+    {
+      "key": "c1",
+      "unstructured": "M. Born , The Born–Einstein Letters 1916–1955: Freindship, Politics and Physics in Uncertain Times, Macmillan, New York (2005), p. 88. Original letter © The Hebrew University of Jerusalem, Israel."
+    },
+    {
+      "key": "c2",
+      "volume-title": "The End of the Uncertain World: The Life and Science of Max Born",
+      "author": "Greenspan N. T.",
+      "year": "2005"
+    }
+  ],
+  "container-title": "Physics Today",
+  "original-title": [],
+  "language": "en",
+  "link": [
+    {
+      "URL": "http://physicstoday.scitation.org/doi/pdf/10.1063/1.1995729",
+      "content-type": "unspecified",
+      "content-version": "vor",
+      "intended-application": "similarity-checking"
+    }
+  ],
+  "deposited": {
+    "date-parts": [
+      [
+        2016,
+        12,
+        28
+      ]
+    ],
+    "date-time": "2016-12-28T18:02:11Z",
+    "timestamp": 1482948131000
+  },
+  "score": 1,
+  "subtitle": [],
+  "short-title": [],
+  "issued": {
+    "date-parts": [
+      [
+        2005,
+        5
+      ]
+    ]
+  },
+  "references-count": 2,
+  "journal-issue": {
+    "issue": "5",
+    "published-print": {
+      "date-parts": [
+        [
+          2005,
+          5
+        ]
+      ]
+    }
+  },
+  "alternative-id": [
+    "10.1063/1.1995729"
+  ],
+  "URL": "http://dx.doi.org/10.1063/1.1995729",
+  "relation": {},
+  "ISSN": [
+    "0031-9228",
+    "1945-0699"
+  ],
+  "subject": [
+    "General Physics and Astronomy"
+  ],
+  "container-title-short": "Physics Today",
+  "published": {
+    "date-parts": [
+      [
+        2005,
+        5
+      ]
+    ]
+  }
+}

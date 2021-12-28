@@ -66,7 +66,10 @@ def csljson_to_cff_yaml(cffjson: dict, template) -> Tuple[ruamel.yaml.YAML, Any]
         data.yaml_add_eol_comment("FIXME: title contains new line: this is strange", "title")
 
     data['doi'] = cffjson['DOI']
-    data['license'] = cffjson['license']
+
+    if 'license' in cffjson:
+        data['license'] = cffjson['license']
+
     data['date-released'] = datetime(*cffjson['published']['date-parts'][0], 1).date()
     data['authors'] = authors_of_csl(cffjson)
 
